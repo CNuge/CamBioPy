@@ -38,6 +38,7 @@ process_fastq_record : Create a dictionary from a list of the four lines of a fa
 
 import os 
 import copy
+from Bio import SeqIO
 
 
 def file_type(s):
@@ -79,13 +80,15 @@ def file_type(s):
 			"Accepted file extensions: fa, fq, fasta, or fastq.")
 
 
-def read_fasta(filename):
+def read_fasta(filepath, to_df = False):
 	""" 
 	Read data from a fasta file.
 	
 	Arguments
 	---------
 	filename : str, the path to a file in fasta format.
+	to_df : bool, should the function return a pandas dataframe 
+				instead of a list of dicts? (default is False)
 
 	Returns
 	---------	
@@ -103,25 +106,20 @@ def read_fasta(filename):
 	>>> data[0].keys()
 	dict_keys(['name', 'sequence'])
 	"""
-	seq_records = []
+	fasta_sequences = SeqIO.parse(open(filepath), 'fasta')
+	
+	data = []
+	for fasta in fasta_sequences:
+		name, sequence = fasta.id, str(fasta.seq)
 
-	record = {"name" : None, "sequence" : ""}
+		datadict = {"name": name, 
+					"sequence":sequence}
+		data.append(datadict)
 
-	with open(filename) as file:
-		for line in file:
-			#if we hit a new record
-			if line[0] == ">":
-				#if current record, append to the record list
-				if record["name"] != None:
-					seq_records.append(copy.copy(record))	
-				record["name"] = line[1:].rstrip()
-				record["sequence"] = ""
-			else:
-				record["sequence"] += line.rstrip()
+	if to_df == False:
+		return data
 
-	seq_records.append(record)	
-
-	return seq_records
+	return pd.DataFrame(data)
 
 
 def iter_read_fasta(filename, batch = 1000):
