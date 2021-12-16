@@ -23,10 +23,13 @@ def vcf_subsample(infile, outfile, sample_freq=0.01):
 				header_max = i
 			data.append(line)
 
-	print("writing header to new file")
-	lines_to_file(data[:header_max+1], outfile, add_newline=False, mode='w')
+	#only do this part if some header information has been identified
+	if header_max != -1:
+		print("writing header to new file")
+		lines_to_file(data[:header_max+1], outfile, add_newline=False, mode='w')
 
-	del data[:header_max+1] #delete the header lines prior to sampling
+		del data[:header_max+1] #delete the header lines prior to sampling
+
 
 	data = np.array(data) #make the list of lines an array (for ease of slicing)
 	print("generating subsample")
