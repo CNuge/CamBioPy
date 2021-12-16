@@ -24,12 +24,16 @@ def get_filelist(location, suffix = None, recursive = False):
 
     return filelist
 
-def list_to_file(string_list, filename):
-    """write a list of strings to a file, each string on separate line."""
-    f=open(filename, 'w')
+def lines_to_file(string_list, filename, add_newline=False, mode='w'):
+    """ write a list of strings to a file.
+        options to add newline characters, or to change the write style
+        ('w' == write, 'a' == append)
+    """
+    f=open(filename, mode)
     for line in string_list:
         f.write(line)
-        f.write('\n')
+        if add_newline == True:
+            f.write('\n')
     f.close()
 
 
@@ -43,4 +47,4 @@ if __name__ == '__main__':
                                         recursive = True)
 
     outfile = "bam_file_list.txt"
-    list_to_file(realigned_filelist, outfile)
+    list_to_file(realigned_filelist, outfile, add_newline=True)
