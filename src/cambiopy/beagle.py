@@ -45,6 +45,13 @@ def write_beagle(df, outfile, header = None,):
 							index = False,  float_format='%.6f')
 
 
+def build_generic_header(keep_samples):
+	out = ["marker", "allele1", "allele2", ] 
+	for i, _ in enumerate(keep_samples):
+		dat = [f'Ind{i}'] * 3
+		out.extend(dat)
+	return '\t'.join(out)
+
 
 if __name__ == '__main__':
 	
@@ -70,7 +77,7 @@ if __name__ == '__main__':
 
 	keep_cols = ["marker", "allele1", "allele2", ]
 	
-	out_header = '\t'.join(["marker", "allele1", "allele2", ] + keep_samples)
+	out_header = build_generic_header(keep_samples)
 
  	for s in keep_samples:
  		keep_cols.extend(col_dict[s])
