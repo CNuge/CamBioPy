@@ -30,16 +30,16 @@ def ncbi2vgp_dict(vgp_nov10 = vgp_nov10, ncbi = ncbi):
 	return {k: v for k, v in zip(ncbi, vgp_nov10)}
 
 def vgp2numeric_dict(vgp_nov10 = vgp_nov10):
-	return {x: i for i, x in enumerate(vgp_nov10)}
+	return {x: i for i, x in enumerate(vgp_nov10, start=1)}
 
 def numeric2vgp_dict(vgp_nov10 = vgp_nov10):
-	return {i: x for i, x in enumerate(vgp_nov10)}
+	return {i: x for i, x in enumerate(vgp_nov10, start=1)}
 
 def ncbi2numeric_dict(ncbi = ncbi):
-	return {x: i for i, x in enumerate(ncbi)}
+	return {x: i for i, x in enumerate(ncbi, start=1)}
 
 def numeric2ncbi_dict(ncbi = ncbi):
-	return {i: x for i, x in enumerate(ncbi)}
+	return {i: x for i, x in enumerate(ncbi, start=1)}
 
 
 
