@@ -79,12 +79,12 @@ if __name__ == '__main__':
 	
 	out_header = build_generic_header(keep_samples)
 
- 	for s in keep_samples:
- 		keep_cols.extend(col_dict[s])
+	for s in keep_samples:
+		keep_cols.extend(col_dict[s])
 
- 	# double check there are
- 	# three cols per sample, plus three leading columns
- 	assert (len(keep_cols) - 3) == (len(keep_samples)*3)
+	# double check there are
+	# three cols per sample, plus three leading columns
+	assert (len(keep_cols) - 3) == (len(keep_samples)*3)
 
 	#beagle_out = "../data/downsampled/subset_merged.beagle"
 	beagle_out = "/scratch/nugentc/data/analysis-cunner-snps/data/raw/subset_merged.beagle"
