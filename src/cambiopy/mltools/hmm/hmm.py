@@ -1,7 +1,3 @@
-import math
-import random
-import numpy as np
-import pandas as pd
 
 from pomegranate import *
 
@@ -67,15 +63,15 @@ if __name__ == '__main__':
 
 
 	s = list('HHHHHHHHHTTHHHHHHHH')
-	get_path(s, holstein_hmmr)
+	get_path(s, hmmr)
 
 	s = list('TTTTTHHHHHHHHTTTTT')
-	get_path(s, holstein_hmmr)
+	get_path(s, hmmr)
 
 	combos = ['H' * x + 'T' * (91 - x) for x in range(91)]
 
 	combos[55]
 
-	get_path(combos[55], holstein_hmmr)
+	get_path(combos[55], hmmr)
 
-	get_path(combos[77], holstein_hmmr)
+	get_path(combos[77], hmmr)
