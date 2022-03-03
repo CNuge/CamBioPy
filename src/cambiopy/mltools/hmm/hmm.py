@@ -59,7 +59,12 @@ def get_path(sequence, model):
 
 if __name__ == '__main__':
 	
-	holstein_hmmr = hmm()
+	hmmr = hmm()
+
+
+	# get these from your simulated data
+	#hmmr.fit(sequences = obvs_seqs, labels = true_labels, algorithm = 'labeled')
+
 
 	s = list('HHHHHHHHHTTHHHHHHHH')
 	get_path(s, holstein_hmmr)
