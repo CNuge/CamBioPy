@@ -55,10 +55,10 @@ def gen_obv(true_val, h_see_t = 0.3820, t_see_h = 0.4625):
 			return "H"
 
 	elif true_val == "T":
- 		if val < t_see_h:
- 			return "H"
- 		else:
- 			return "T"
+		if val < t_see_h:
+			return "H"
+		else:
+			return "T"
 
 
 def get_truth_obvs_pair(true_str):
