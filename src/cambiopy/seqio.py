@@ -79,6 +79,14 @@ def file_type(s):
 		raise ValueError("File must be in fasta or fastq format. "+\
 			"Accepted file extensions: fa, fq, fasta, or fastq.")
 
+from allel import read_vcf
+
+if infile.endswith('.vcf') or infile.endswith('.vcf.gz'):
+    vcf=allel.read_vcf(infile,log=sys.stderr)
+    gen=allel.GenotypeArray(vcf['calldata/GT'])
+    samples=vcf['samples']
+
+
 
 def read_fasta(filepath, to_df = False):
 	""" 
