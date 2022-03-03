@@ -52,11 +52,11 @@ def make_dnn_classifier(hidden_sizes = [24,48,96,192,96,48,24,12], dropout = 0.2
 	#initiate the model
 	model = Sequential()
 	#specify the in layer, denoting size
-	model.add(layers.Dense(100, input_shape=(in_shape,) , activation = 'relu'))
+	model.add(layers.Dense(in_shape, input_shape=(in_shape,) , activation = 'relu'))
 
 	n_hidden = len(hidden_sizes)
 
-	for i in range(0,n_hidden):
+	for i in range(0, n_hidden):
 		model.add(layers.Dense(hidden_sizes[i], activation = 'relu'))
 		if dropout != 0:
 			model.add(layers.Dropout(dropout))

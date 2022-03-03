@@ -1,7 +1,5 @@
-import os
 import pickle
 
-import numpy as np
 import pandas as pd
 
 import plotly
@@ -93,8 +91,8 @@ if __name__ == '__main__':
 	pca_model, pca_result = run_pca(train, pca_predictors, n_components = 4)
 
 	#could save the scaler model or pca for resue here
-	#pickle.dump(pca_model, open('pca.pkl', 'wb'))
-	#pickle.dump(scaler, open('scaler_pca.pkl', 'wb'))
+	pickle.dump(pca_model, open('pca.pkl', 'wb'))
+	pickle.dump(scaler, open('scaler_pca.pkl', 'wb'))
 
 	#create an interactive plot of all the pairwise PC combinations
 	#model passed in solely for axis labels

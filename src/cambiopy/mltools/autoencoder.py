@@ -1,17 +1,10 @@
 import pickle
-import imageio
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import tensorflow as tf
 
-
 #these ones for the Autoencoder class
-from tensorflow import keras
 from tensorflow.keras import layers
-from tensorflow.keras.layers import Dense 
-from tensorflow.keras.models import Model, Sequential
-
+from tensorflow.keras.models import Model
 
 class Autoencoder(Model):
 	def __init__(self, latent_dim, in_shape = (28, 28),):
