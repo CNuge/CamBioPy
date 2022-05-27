@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 
 #these ones for the Autoencoder class
-from tensorflow.keras import layers
+from tensorflow.keras import layers, losses
 from tensorflow.keras.models import Model
 
 class Autoencoder(Model):
@@ -61,17 +61,16 @@ if __name__ == '__main__':
 	#make data floating point!
 	print("if data from across several columns, not nested in one, then change this list comprehension")
 	x_auto_train = np.array([x for x in auto_train.data_column.values])
-	x_auto_train = x_auto_train.astype('float32') / 255.
+	x_auto_train = x_auto_train.astype('float32') 
 
 	x_auto_test = np.array([x for x in auto_test.data_column.values])
-	x_auto_test = x_auto_test.astype('float32') / 255.
-
+	x_auto_test = x_auto_test.astype('float32') 
 
 	##################
 	#train the autoencoder
 
 	print("4000bp window example")
-	in_shape = (4 , 4000)
+	in_shape = (4 , 4000, 1)
 
 	print("distilling down to 200 numbers")
 	latent_dim = 200
